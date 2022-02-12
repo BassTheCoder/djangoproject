@@ -24,13 +24,19 @@
       <div>
       {% else %}
         <a class="btn" href="{% url 'login' %}">Login</a>
-        <a class="btn" href="/register">Register</a>
+        <a class="btn" href="{% url 'register' %}">Register</a>
       {% endif %}
     </nav>
     {% load material_form %}
     <div></div>
     {% if user.is_authenticated or 'login' in request.path or 'register' in request.path%}
       {% block bodycontent %} {% endblock %}
+    {% else %}
+    <div class="container-fluid">
+      <p>
+        <a href="{% url 'login' %}">Log in</a> to see your notes or <a href="{% url 'register' %}">register</a> to create your own notebook.
+      </p>
+    </div>
     {% endif %}
     {%csrf_token%}
     <script
