@@ -1,0 +1,11 @@
+{% extends "notes/base.html" %}
+{% block bodycontent %}
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend>Note</legend>
+                {{ form }}
+    </fieldset>
+    <button class="btn" type="submit">Submit</button>
+</form>
+{% endblock bodycontent %}

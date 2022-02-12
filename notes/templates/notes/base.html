@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% include 'material/includes/material_css.html' %}
+    {% include 'material/includes/material_js.html' %}
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +15,21 @@
     <title>Notes</title>
   </head>
   <body>
-    {% block bodycontent %} {% endblock %}
+      <button><a href="{% url 'notes-home' %}">Notes Home</a></button>
+      {% if user.is_authenticated %}
+        <button><a href="{% url 'logout' %}">Logout</a></button>
+      {% else %}
+        <button><a href="{% url 'login' %}">Login</a></button>
+        <button><a href="{% url 'register' %}">Register</a></button>
+      {% endif %}
+    {% load material_form %}
+    {% if user.is_authenticated or 'login' in request.path or 'register' in request.path%}
+      {% block bodycontent %} {% endblock %}
+    {% else %}
+      <a href="{% url 'login' %}">Log in</a>
+      <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

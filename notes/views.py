@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from .models import Note
+from django.views.generic import ListView, DetailView, CreateView
+from .models import Note, User
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import logout
 
 def home(request):
     context = {
@@ -16,3 +18,10 @@ class NotesListView(ListView):
 class NoteView(DetailView):
     model = Note
 
+class NoteAddView(LoginRequiredMixin, CreateView):
+    model = Note
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)

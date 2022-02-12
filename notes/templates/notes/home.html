@@ -1,7 +1,15 @@
 {% extends "notes/base.html" %}
 {% block bodycontent %}
-    <p>hello world!</p>
+    <h1>Your Notes</h1>
+
+    <a href="{% url 'note-add' %}">Add new note</a></br>
+    <ul>
     {% for note in notes %}
-    <li> {{ note.title }} </li>
+    {% if note.author == request.user %}
+    <li>
+      <a href="notes/{{ note.id }}"> {{ note.title }}</a>
+    </li>
+    {% endif %}
   {% endfor %}
+  </ul>
 {% endblock bodycontent %}
