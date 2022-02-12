@@ -1,4 +1,7 @@
 {% extends "notes/base.html" %}
 {% block bodycontent %}
     <p>hello world!</p>
+    {% for note in notes %}
+    <li> {{ note.title }} </li>
+  {% endfor %}
 {% endblock bodycontent %}

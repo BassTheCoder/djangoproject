@@ -1,0 +1,11 @@
+{% extends "notes/base.html" %}
+{% block bodycontent %}
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend>Log in</legend>
+                {{ form }}
+    </fieldset>
+    <button class="btn btn-outline-warning" type="submit">Login</button>
+</form>
+{% endblock bodycontent %}
