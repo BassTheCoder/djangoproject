@@ -41,9 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 ]
-REGISTRATION_AUTO_LOGIN = True
-ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_EMAIL_HTML = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
