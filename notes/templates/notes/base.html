@@ -15,19 +15,22 @@
     <title>Notes</title>
   </head>
   <body>
-      <button><a href="{% url 'notes-home' %}">Notes Home</a></button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{% url 'notes-home' %}">Notes Home</a></br>
       {% if user.is_authenticated %}
-        <button><a href="{% url 'logout' %}">Logout</a></button>
+      <div class="inline nav-item my-2 my-lg-0">
+        <span class="text-info">Logged in as {{ request.user }}</span>
+        <a class="btn my-2 my-sm-0" href="{% url 'logout' %}">Logout</a>
+      <div>
       {% else %}
-        <button><a href="{% url 'login' %}">Login</a></button>
-        <button><a href="{% url 'register' %}">Register</a></button>
+        <a class="btn" href="{% url 'login' %}">Login</a>
+        <a class="btn" href="/accounts/register">Register</a>
       {% endif %}
+    </nav>
     {% load material_form %}
+    <div></div>
     {% if user.is_authenticated or 'login' in request.path or 'register' in request.path%}
       {% block bodycontent %} {% endblock %}
-    {% else %}
-      <a href="{% url 'login' %}">Log in</a>
-      <a href="{% url 'register' %}">Register</a>
     {% endif %}
 
     <script

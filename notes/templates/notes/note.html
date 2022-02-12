@@ -1,9 +1,11 @@
 {% extends "notes/base.html" %}
 {% block bodycontent %}
-
+<div class="container-fluid">
     <h1>{{ note.title }}</h1>
     <h3>Added: {{ note.date_created }}</h3>
     <h5>Last modified: {{ note.last_modified }}</h5></br>
-    {{ note.content }}
-
+    {{ note.content }}</br></br>
+    <a href="{% url 'note-edit-view' note.id %}" class="btn">Edit</a>
+    <a href="{% url 'note-delete-view' note.id %}" class="btn">Delete</a>
+</div>
 {% endblock bodycontent %}

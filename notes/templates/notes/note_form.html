@@ -1,5 +1,6 @@
 {% extends "notes/base.html" %}
 {% block bodycontent %}
+<div class="container-fluid">
 <form method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
@@ -8,4 +9,5 @@
     </fieldset>
     <button class="btn" type="submit">Submit</button>
 </form>
+</div>
 {% endblock bodycontent %}

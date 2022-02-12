@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'notes',
+    'material',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,9 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'notes',
-    'material',
 ]
+REGISTRATION_AUTO_LOGIN = True
+REGISTRATION_EMAIL_HTML = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

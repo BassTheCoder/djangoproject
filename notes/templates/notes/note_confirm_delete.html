@@ -1,0 +1,12 @@
+{% extends "notes/base.html" %}
+{% block bodycontent %}
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend>Delete Note</legend>
+                Are you sure you want to delete "{{ note.title }}" note? This cannot be undone.
+    </fieldset>
+    <button class="btn btn-outline-danger" type="submit">Yes</button>
+    <a class="btn" href="{% url 'note-view' note.id %}">No</a>
+</form>
+{% endblock bodycontent %}
