@@ -24,7 +24,7 @@
       <div>
       {% else %}
         <a class="btn" href="{% url 'login' %}">Login</a>
-        <a class="btn" href="/accounts/register">Register</a>
+        <a class="btn" href="/register">Register</a>
       {% endif %}
     </nav>
     {% load material_form %}
@@ -32,7 +32,7 @@
     {% if user.is_authenticated or 'login' in request.path or 'register' in request.path%}
       {% block bodycontent %} {% endblock %}
     {% endif %}
-
+    {%csrf_token%}
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
